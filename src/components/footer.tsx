@@ -31,9 +31,9 @@ export function Footer() {
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-foreground mb-4">Resources</h4>
             <ul className="space-y-2 text-xs text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Documentation</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">API Reference</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Support Helpdesk</a></li>
+              <li><Link href="/docs" className="hover:text-primary transition-colors">Documentation</Link></li>
+              <li><Link href="/docs/api" className="hover:text-primary transition-colors">API Reference</Link></li>
+              <li><Link href="/support" className="hover:text-primary transition-colors">Support Helpdesk</Link></li>
             </ul>
           </div>
 
@@ -41,9 +41,9 @@ export function Footer() {
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-foreground mb-4">Legal</h4>
             <ul className="space-y-2 text-xs text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Business Associate Agreement (BAA)</a></li>
+              <li><Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
+              <li><Link href="/baa" className="hover:text-primary transition-colors">Business Associate Agreement (BAA)</Link></li>
             </ul>
           </div>
         </div>
