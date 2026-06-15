@@ -1,0 +1,174 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  DOCTOR
+  PATIENT
+}
+
+enum RecordType {
+  CONDITION
+  ALLERGY
+  MEDICATION
+  VISIT
+}
+
+enum DocumentCategory {
+  LAB_REPORT
+  PRESCRIPTION
+  DISCHARGE_SUMMARY
+  IMAGING
+  OTHER
+}
+
+enum LabResultStatus {
+  NORMAL
+  HIGH
+  LOW
+  CRITICAL
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+model User {
+  id            String    @id @default(uuid())
+  name          String
+  email         String    @unique
+  password      String
+  role          Role      @default(PATIENT)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  patient       Patient?
+  doctor        Doctor?
+  sentMessages  Message[]  @relation("SentMessages")
+  receivedMessages Message[] @relation("ReceivedMessages")
+  auditLogs     AuditLog[]
+}
+
+model Patient {
+  id                       String          @id @default(uuid())
+  userId                   String          @unique
+  user                     User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  phone                    String?
+  dateOfBirth              DateTime?
+  gender                   String?
+  bloodType                String?
+  address                  String?
+  emergencyContactName     String?
+  emergencyContactPhone    String?
+  emergencyContactRelation String?
+  createdAt                DateTime        @default(now())
+  updatedAt                DateTime        @updatedAt
+
+  medicalRecords           MedicalRecord[]
+  documents                Document[]
+  labResults               LabResult[]
+  appointments             Appointment[]
+}
+
+model Doctor {
+  id            String          @id @default(uuid())
+  userId        String          @unique
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  specialty     String
+  licenseNumber String
+  bio           String?
+  phone         String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  appointments  Appointment[]
+}
+
+model MedicalRecord {
+  id          String     @id @default(uuid())
+  patientId   String
+  patient     Patient    @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  recordType  RecordType
+  title       String
+  description String?
+  status      String?    // e.g., "Active", "Resolved", "Chronic"
+  date        DateTime   @default(now())
+  provider    String?    // Clinician / Facility name
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Document {
+  id          String           @id @default(uuid())
+  patientId   String
+  patient     Patient          @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  title       String
+  fileUrl     String
+  fileType    String?          // e.g., "pdf", "jpg", "png"
+  category    DocumentCategory @default(OTHER)
+  uploadedAt  DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+}
+
+model LabResult {
+  id             String          @id @default(uuid())
+  patientId      String
+  patient        Patient         @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  testName       String
+  testDate       DateTime        @default(now())
+  resultValue    String
+  referenceRange String?
+  unit           String?
+  status         LabResultStatus @default(NORMAL)
+  notes          String?
+  fileUrl        String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+}
+
+model Appointment {
+  id        String            @id @default(uuid())
+  patientId String
+  patient   Patient           @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  doctorId  String
+  doctor    Doctor            @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  dateTime  DateTime
+  status    AppointmentStatus @default(PENDING)
+  reason    String
+  notes     String?
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+}
+
+model Message {
+  id         String   @id @default(uuid())
+  senderId   String
+  sender     User     @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+  receiverId String
+  receiver   User     @relation("ReceivedMessages", fields: [receiverId], references: [id], onDelete: Cascade)
+  content    String
+  sentAt     DateTime @default(now())
+  isRead     Boolean  @default(false)
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  action    String   // e.g., "VIEW_MEDICAL_RECORD", "UPDATE_PATIENT_PROFILE"
+  details   String?  // details of the action
+  ipAddress String?
+  timestamp DateTime @default(now())
+}
