@@ -1,7 +1,7 @@
 import type { NextAuthConfig } from "next-auth";
 
 export const authConfig = {
-  secret: process.env.AUTH_SECRET,
+  secret: process.env.AUTH_SECRET || "secret_fallback_patient_iq_auth_gateway_9921",
   pages: {
     signIn: "/login",
   },

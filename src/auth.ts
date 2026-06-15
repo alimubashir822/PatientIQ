@@ -6,7 +6,7 @@ import bcrypt from "bcryptjs";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
-  secret: process.env.AUTH_SECRET,
+  secret: process.env.AUTH_SECRET || "secret_fallback_patient_iq_auth_gateway_9921",
   providers: [
     Credentials({
       async authorize(credentials) {
