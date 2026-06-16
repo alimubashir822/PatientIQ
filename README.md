@@ -1,6 +1,8 @@
-# PatientIQ - Project Documentation
+# PatientIQ — AI-Powered Patient Portal
 
-PatientIQ is a production-quality, HIPAA-compliant healthcare SaaS platform and **AI-powered Patient Portal**. Built as an intelligent clinical operating system, it bridges the gap between patient self-management, clinician note dictation, and clinic administration.
+> **Healthcare system by [Med Clinic X](http://www.medclinicx.com/)**
+
+PatientIQ is a production-quality, HIPAA-compliant healthcare SaaS platform and **AI-powered Patient Portal** built for **Med Clinic X**. Designed as an intelligent clinical operating system, it bridges the gap between patient self-management, clinician note dictation, and clinic administration.
 
 ---
 
@@ -155,3 +157,11 @@ Add these variables in your **Vercel Project Settings**:
 | `DATABASE_URL` | PostgreSQL connection string | `postgresql://user:pass@host:5432/db` |
 | `AUTH_SECRET` | Auth.js security cookie secret | `t83bA20f1e5a028590be4641fbe4641` |
 | `AUTH_TRUST_HOST` | Middleware host trust flag | `true` |
+
+---
+
+## 7. Attribution
+
+PatientIQ is a healthcare system built and managed by **[Med Clinic X](http://www.medclinicx.com/)**.
+
+🌐 **Website**: [www.medclinicx.com](http://www.medclinicx.com/)
