@@ -1,15 +1,22 @@
 "use client";
 
+import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { HeartPulse } from "lucide-react";
+import { HeartPulse, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const pathname = usePathname();
   const { data: session } = useSession();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   
+  // Close menu when pathname changes
+  React.useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Features", href: "/features" },
@@ -54,8 +61,8 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* CTA Buttons */}
-        <div className="flex items-center gap-3">
+        {/* Desktop CTA Buttons */}
+        <div className="hidden md:flex items-center gap-3">
           {session ? (
             <Link
               href={getDashboardLink()}
@@ -80,7 +87,71 @@ export function Navbar() {
             </>
           )}
         </div>
+
+        {/* Mobile menu toggle */}
+        <div className="flex md:hidden">
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-1.5 rounded-md hover:bg-muted text-muted-foreground hover:text-foreground focus:outline-none transition-all cursor-pointer"
+            aria-label="Toggle Menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Drawer Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-x-0 top-16 bottom-0 z-50 bg-background/95 backdrop-blur-md flex flex-col p-6 border-b border-border animate-slide-up md:hidden overflow-y-auto">
+          <nav className="flex flex-col gap-4 py-4">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "text-base font-semibold py-2 transition-colors border-b border-border/40 hover:text-primary",
+                    isActive ? "text-primary" : "text-muted-foreground"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className="flex flex-col gap-3 pt-6 border-t border-border mt-auto">
+            {session ? (
+              <Link
+                href={getDashboardLink()}
+                className="flex h-11 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-sm hover:opacity-90 transition-all"
+              >
+                Go to Dashboard
+              </Link>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className="flex h-11 items-center justify-center rounded-xl border border-border text-sm font-bold text-foreground hover:bg-muted transition-all"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/register"
+                  className="flex h-11 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-sm hover:opacity-90 transition-all"
+                >
+                  Register
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </header>
   );
 }

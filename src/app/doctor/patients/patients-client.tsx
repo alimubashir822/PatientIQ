@@ -167,7 +167,7 @@ export function PatientsClient({ patients }: PatientsClientProps) {
           />
         </div>
 
-        <Card className="h-[calc(100vh-16rem)] overflow-y-auto">
+        <Card className="h-48 lg:h-[calc(100vh-16rem)] overflow-y-auto">
           <CardContent className="p-2 space-y-1">
             {filteredPatients.length > 0 ? (
               filteredPatients.map((p) => (
@@ -398,7 +398,7 @@ export function PatientsClient({ patients }: PatientsClientProps) {
               </div>
             ) : healthData ? (
               <Tabs defaultValue="history" className="w-full">
-                <TabsList className="grid w-full grid-cols-3 max-w-sm">
+                <TabsList className="flex w-full overflow-x-auto whitespace-nowrap scrollbar-none justify-start md:grid md:grid-cols-3 md:max-w-sm">
                   <TabsTrigger value="history">History</TabsTrigger>
                   <TabsTrigger value="documents">Vault Docs</TabsTrigger>
                   <TabsTrigger value="labs">Labs</TabsTrigger>

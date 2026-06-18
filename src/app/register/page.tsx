@@ -34,20 +34,21 @@ export default function RegisterPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-6">
-      <Card className="w-full max-w-md shadow-premium">
-        <CardHeader className="space-y-4 text-center">
-          <Link href="/" className="inline-flex items-center gap-2 justify-center select-none group">
-            <HeartPulse className="h-6 w-6 text-primary group-hover:scale-105 transition-transform" />
-            <span className="font-display font-extrabold text-xl tracking-tight text-primary">PatientIQ</span>
-          </Link>
-          <div>
-            <CardTitle className="text-xl">Create your Account</CardTitle>
-            <CardDescription className="text-xs">
-              Enter your credentials to access the secure health portal.
-            </CardDescription>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
+      <div className="w-full max-w-md py-8">
+        <Card className="shadow-premium">
+          <CardHeader className="space-y-3 text-center p-4 sm:p-6 pb-2">
+            <Link href="/" className="inline-flex items-center gap-2 justify-center select-none group">
+              <HeartPulse className="h-6 w-6 text-primary group-hover:scale-105 transition-transform" />
+              <span className="font-display font-extrabold text-xl tracking-tight text-primary">PatientIQ</span>
+            </Link>
+            <div>
+              <CardTitle className="text-xl">Create your Account</CardTitle>
+              <CardDescription className="text-xs">
+                Enter your credentials to access the secure health portal.
+              </CardDescription>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-4 p-4 sm:p-6 pt-0">
           {error && (
             <div className="flex items-center gap-2 p-3 bg-red-500/10 text-destructive rounded-lg text-xs font-semibold">
               <AlertCircle className="h-4 w-4 shrink-0" />
@@ -121,6 +122,7 @@ export default function RegisterPage() {
           </p>
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 }

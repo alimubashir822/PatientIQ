@@ -119,7 +119,7 @@ export default async function MedicalHistoryPage() {
       </div>
 
       <Tabs defaultValue="story" className="w-full">
-        <TabsList className="grid w-full grid-cols-5 max-w-2xl">
+        <TabsList className="flex w-full overflow-x-auto whitespace-nowrap scrollbar-none justify-start md:grid md:grid-cols-5 md:max-w-2xl">
           <TabsTrigger value="story">Your Health Story</TabsTrigger>
           <TabsTrigger value="conditions">Conditions</TabsTrigger>
           <TabsTrigger value="medications">Medications</TabsTrigger>

@@ -140,15 +140,15 @@ export function DashboardLayout({ children, user }: DashboardLayoutProps) {
 
       {/* Mobile Navigation Drawer */}
       {isMobileOpen && (
-        <div className="fixed inset-0 z-40 flex md:hidden">
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-xs" onClick={() => setIsMobileOpen(false)} />
+        <div className="fixed inset-0 z-50 flex md:hidden">
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-xs z-40" onClick={() => setIsMobileOpen(false)} />
           <aside className="relative flex flex-col w-72 max-w-xs bg-card h-full z-50 animate-slide-right border-r border-border">
             <div className="flex items-center justify-between h-16 px-6 border-b border-border">
               <div className="flex items-center gap-2">
                 <HeartPulse className="h-6 w-6 text-primary" />
                 <span className="font-display font-bold text-lg tracking-tight text-primary">PatientIQ</span>
               </div>
-              <button onClick={() => setIsMobileOpen(false)} className="p-1.5 rounded-md hover:bg-muted text-muted-foreground hover:text-foreground cursor-pointer">
+              <button onClick={() => setIsMobileOpen(false)} className="p-1.5 rounded-md hover:bg-muted text-muted-foreground hover:text-foreground cursor-pointer min-h-9 min-w-9 flex items-center justify-center">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -193,14 +193,15 @@ export function DashboardLayout({ children, user }: DashboardLayoutProps) {
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Top Header */}
         <header className="flex items-center justify-between h-16 px-6 border-b border-border bg-card">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 overflow-hidden">
             <button
               onClick={() => setIsMobileOpen(true)}
-              className="p-1.5 rounded-md md:hidden hover:bg-muted text-muted-foreground hover:text-foreground cursor-pointer"
+              className="p-1.5 rounded-md md:hidden hover:bg-muted text-muted-foreground hover:text-foreground cursor-pointer min-h-9 min-w-9 flex items-center justify-center shrink-0"
+              aria-label="Open Sidebar Menu"
             >
               <Menu className="h-6 w-6" />
             </button>
-            <h1 className="text-xl font-bold tracking-tight text-foreground md:block hidden">
+            <h1 className="text-base md:text-xl font-bold tracking-tight text-foreground truncate max-w-[180px] sm:max-w-none">
               {navItems.find(item => pathname === item.href || pathname.startsWith(item.href + "/"))?.label || "Portal"}
             </h1>
           </div>

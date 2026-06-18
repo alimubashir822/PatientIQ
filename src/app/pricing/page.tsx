@@ -54,7 +54,7 @@ export default function PricingPage() {
           </div>
 
           {/* Clinician Card */}
-          <div className="p-8 bg-white border-2 border-primary rounded-2xl flex flex-col justify-between shadow-md relative scale-102">
+          <div className="p-8 bg-white border-2 border-primary rounded-2xl flex flex-col justify-between shadow-md relative md:scale-102">
             <div className="absolute top-0 right-6 -translate-y-1/2 bg-primary text-primary-foreground text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full">
               Popular
             </div>

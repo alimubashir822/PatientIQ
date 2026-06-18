@@ -49,7 +49,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-muted-foreground text-center md:text-left">
             &copy; {new Date().getFullYear()} PatientIQ Inc. All rights reserved. HIPAA Compliant. &mdash;{" "}
             Healthcare system by{" "}
             <a
@@ -61,7 +61,7 @@ export function Footer() {
               Med Clinic X
             </a>
           </p>
-          <div className="flex items-center gap-4 text-xs text-muted-foreground">
+          <div className="flex items-center gap-4 text-xs text-muted-foreground justify-center md:justify-end w-full md:w-auto">
             <a href="#" className="hover:text-primary transition-colors">Status</a>
             <span>&bull;</span>
             <Link href="/contact" className="hover:text-primary transition-colors">Contact Sales</Link>
