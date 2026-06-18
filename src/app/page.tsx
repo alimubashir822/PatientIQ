@@ -57,13 +57,13 @@ export default function Homepage() {
           {/* Premium Hero Graphic Mockup */}
           <div className="relative mx-auto lg:ml-auto w-full max-w-md lg:max-w-full">
             <div className="bg-white rounded-2xl border border-border p-6 shadow-premium relative overflow-hidden transition-all hover:shadow-glow duration-300">
-              {/* Top Bar simulating dashboard UI */}
+               {/* Top Bar simulating dashboard UI */}
               <div className="flex items-center justify-between border-b border-border pb-4 mb-6">
                 <div className="flex items-center gap-3">
                   <div className="h-3 w-3 rounded-full bg-red-400" />
                   <div className="h-3 w-3 rounded-full bg-amber-400" />
                   <div className="h-3 w-3 rounded-full bg-green-400" />
-                  <span className="text-xs text-muted-foreground ml-2">patientiq.com/patient/dashboard</span>
+                  <span className="text-xs text-muted-foreground ml-2 truncate max-w-[175px] sm:max-w-none">patientiq.com/patient/dashboard</span>
                 </div>
               </div>
 
@@ -77,7 +77,7 @@ export default function Homepage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="bg-card border border-border p-4 rounded-xl">
                     <Calendar className="h-6 w-6 text-accent mb-2" />
                     <span className="text-xs text-muted-foreground block">Upcoming Checkup</span>
