@@ -80,7 +80,7 @@ export default async function PatientDashboardPage() {
             Access and manage your health records in one secure portal.
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Link href="/patient/appointments">
             <Button size="sm" className="font-semibold cursor-pointer">
               Book Appointment
@@ -194,7 +194,7 @@ export default async function PatientDashboardPage() {
             </CardHeader>
             <CardContent>
               {/* Timeline Steps layout */}
-              <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 relative">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
                 <div className="p-4 border-2 border-primary bg-sky-50/20 rounded-xl relative">
                   <div className="absolute top-2 right-2 h-4 w-4 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] font-bold">✓</div>
                   <span className="text-[9px] uppercase tracking-wider text-primary font-bold">Step 1</span>

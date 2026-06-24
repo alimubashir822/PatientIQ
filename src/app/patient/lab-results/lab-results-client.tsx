@@ -116,7 +116,7 @@ export function LabResultsClient({ initialLabs }: LabResultsClientProps) {
                 )}
 
                 <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1">
                       <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Test Name</label>
                       <Input required name="testName" type="text" placeholder="e.g. Lipid Panel" />
@@ -127,7 +127,7 @@ export function LabResultsClient({ initialLabs }: LabResultsClientProps) {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1">
                       <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Status / Assessment</label>
                       <Select name="status" defaultValue="NORMAL">
@@ -143,7 +143,7 @@ export function LabResultsClient({ initialLabs }: LabResultsClientProps) {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1">
                       <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Result Value</label>
                       <Input required name="resultValue" type="text" placeholder="e.g. 215" />

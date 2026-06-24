@@ -5,9 +5,9 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-card">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {/* Logo & Description */}
-          <div className="space-y-4 col-span-1 md:col-span-1">
+          <div className="space-y-4 col-span-1 sm:col-span-2 md:col-span-1">
             <div className="flex items-center gap-2">
               <HeartPulse className="h-6 w-6 text-primary" />
               <span className="font-display font-extrabold text-xl tracking-tight text-primary">PatientIQ</span>

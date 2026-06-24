@@ -67,7 +67,7 @@ export function ProfileFormClient({ patient, formattedDob }: ProfileFormClientPr
               <Input name="phone" type="tel" defaultValue={patient.phone || ""} placeholder="+1 (555) 012-3456" />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Date of Birth</label>
                 <Input name="dateOfBirth" type="date" defaultValue={formattedDob} />
@@ -83,7 +83,7 @@ export function ProfileFormClient({ patient, formattedDob }: ProfileFormClientPr
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Blood Type</label>
                 <Select name="bloodType" defaultValue={patient.bloodType || "O+"}>

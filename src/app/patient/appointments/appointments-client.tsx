@@ -194,7 +194,7 @@ Date: ${today}
                       </Select>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Preferred Date</label>
                         <Input required name="date" type="date" min={new Date().toISOString().split("T")[0]} />

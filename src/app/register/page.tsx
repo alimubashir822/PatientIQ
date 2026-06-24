@@ -85,7 +85,7 @@ export default function RegisterPage() {
             </div>
 
             {role === "DOCTOR" && (
-              <div className="grid grid-cols-2 gap-4 animate-slide-up">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-slide-up">
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Specialty</label>
                   <Select name="specialty" defaultValue="General Medicine">

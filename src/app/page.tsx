@@ -107,7 +107,7 @@ export default function Homepage() {
 
       {/* Trust & Stats Section */}
       <section className="py-12 border-y border-border bg-card">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
             <span className="block text-3xl font-display font-extrabold text-primary">99.9%</span>
             <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Uptime SLA</span>
